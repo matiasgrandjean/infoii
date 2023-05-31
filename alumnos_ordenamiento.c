@@ -10,28 +10,29 @@ struct alumno{
 void ordenar(struct  alumno *x){
 
 	int i, j;
-	struct {
-		char nombre[20];
-		int nota;
-	} t;
+	struct alumno t;
+	
 	for(i = 0 ; i < 5-1 ; i++)
 	for(j = i+1 ; j < 5 ; j++)
 		if(strcmp(x[i].nombre, x[j].nombre)>0){
 			strcpy(t.nombre, x[j].nombre);
 			strcpy(x[j].nombre, x[i].nombre);
 			strcpy(x[i].nombre, t.nombre);
+			t.nota = x[j].nota;
+			x[j].nota = x[i].nota;
+			x[i].nota = t.nota;
 		}
 	return;
 }
 
-void main(){
+int main(void){
 
 	struct alumno x[5];
 
 	for(int i = 0 ; i < 5 ; i++){
-		printf("Ingrese el nombre del %d° alumno: ", i+1);
+		printf("Ingrese el nombre del %d alumno: ", i+1);
 		scanf("%s", x[i].nombre);
-		printf("Ingrese la nota del %d° alumno: ", i+1);
+		printf("Ingrese la nota del %d alumno: ", i+1);
 		scanf("%d", &(x[i].nota));
 	}
 
